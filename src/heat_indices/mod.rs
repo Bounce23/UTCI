@@ -1,4 +1,4 @@
-mod utci;
 mod helper;
+mod utci;
 
-use helper::{calculate_vapour_pressure, calculate_polynomial_regression};
+use helper::calculate_polynomial_regression;
