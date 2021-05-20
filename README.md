@@ -5,7 +5,7 @@ which provides a quantification and result to
 an amount of Heat Stress. 
 
 This library utilises an optimised version 
-of the UTCI with Fiala modelm, to provide 
+of the UTCI with Fiala model, to provide 
 a mathematical one-dimensional result to 
 the amount of Heat Stress Felt. 
 
