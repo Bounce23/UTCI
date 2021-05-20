@@ -10,7 +10,7 @@ a mathematical one-dimensional result to
 the amount of Heat Stress Felt. 
 
 # Inputs 
-The paramters for the modelling are:
+The parameters for the modelling are:
 - Air Temperature
 - Radiant Temperature
 - Wind Speed
