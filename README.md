@@ -28,6 +28,6 @@ heat stress.
 # Output
 The output is a decimal number, which correlates 
 to a scale for UTCI equivalent temperature. 
-This Scale ranges from -50[c], Extreme Cold
-Stress to +50[c], Extreme Heat Stress.
+This Scale ranges from -50[c] (Extreme Cold
+Stress), to +50[c] (Extreme Heat Stress).
 
