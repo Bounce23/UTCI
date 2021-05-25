@@ -5,12 +5,12 @@ which provides a quantification and result to
 an amount of Heat Stress. 
 
 This library utilises an optimised version 
-of the UTCI with Fiala modelm, to provide 
+of the UTCI with Fiala model, to provide 
 a mathematical one-dimensional result to 
 the amount of Heat Stress Felt. 
 
 # Inputs 
-The paramters for the modelling are:
+The parameters for the modelling are:
 - Air Temperature
 - Radiant Temperature
 - Wind Speed
@@ -28,6 +28,6 @@ heat stress.
 # Output
 The output is a decimal number, which correlates 
 to a scale for UTCI equivalent temperature. 
-This Scale ranges from -50[c], Extreme Cold
-Stress to +50[c], Extreme Heat Stress.
+This Scale ranges from -50[c] (Extreme Cold
+Stress), to +50[c] (Extreme Heat Stress).
 
