@@ -152,39 +152,6 @@ fn utci_6(air_temperature: f32, wind_speed: f32, relative_humidity: f32) -> f32 
     output
 }
 
-#[test]
-fn check_with_1() {
-    let f = utci_1(25.0, 4.0, 80.0);
-    println!("1 {:?}", f);
-}
-#[test]
-fn check_with_2() {
-    let f = utci_2(25.0, 4.0, 80.0);
-    println!("2 {:?}", f);
-}
-
-#[test]
-fn check_with_3() {
-    let f = utci_3(25.0, 4.0, 80.0);
-    println!("3 {:?}", f);
-}
-
-#[test]
-fn check_with_4() {
-    let f = utci_4(25.0, 4.0, 80.0);
-    println!("4 {:?}", f);
-}
-#[test]
-fn check_with_5() {
-    let f = utci_5(25.0, 4.0, 80.0);
-    println!("5 {:?}", f);
-}
-#[test]
-fn check_with_6() {
-    let f = utci_6(25.0, 4.0, 80.0);
-    println!("6 {:?}", f);
-}
-
 fn calculate_svf(building_height: f32, distance_between_buildings: f32) -> f32 {
     let svf = building_height / (0.5 * distance_between_buildings);
     let svf_output = svf.atan().cos();
@@ -293,4 +260,3 @@ fn calculate_aerodynamic_resistance(wind_speed: f32) -> f32 {
     let resistance = wind_speed / (0.7921);
     resistance
 }
-

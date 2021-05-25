@@ -28,7 +28,6 @@ pub fn calculate_vapour_pressure(air_temperature: f32, relative_humidity: f32) -
     water_vapour * (relative_humidity / 100f32)
 }
 
-
 // Exponentiation function
 fn exp(x: f32) -> f32 {
     const MAX_ITER: i32 = 200;
