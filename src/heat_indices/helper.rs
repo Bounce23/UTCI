@@ -1,10 +1,10 @@
 //! Module containing helper functions
 //! to calulcuate utci
 
-// Used to calculate the vapour pressure 
-// in the air based on temperature and 
-// humidity
-fn calculate_vapour_pressure(air_temperature: f32, relative_humidity: f32) -> f32 {
+// Used to calculate the vapour pressure
+// in the air based on temperature and
+/// humidity
+pub fn calculate_vapour_pressure(air_temperature: f32, relative_humidity: f32) -> f32 {
     let g: [f32; 7] = [
         -2836.5744,
         -6028.076559,
@@ -28,6 +28,7 @@ fn calculate_vapour_pressure(air_temperature: f32, relative_humidity: f32) -> f3
     water_vapour * (relative_humidity / 100f32)
 }
 
+
 // Exponentiation function
 fn exp(x: f32) -> f32 {
     const MAX_ITER: i32 = 200;
@@ -42,8 +43,8 @@ fn exp(x: f32) -> f32 {
     return sum;
 }
 
-/// Used to find an approximation of the 6th 
-/// order polynomial regression model for 
+/// Used to find an approximation of the 6th
+/// order polynomial regression model for
 /// quatifying utci equivaent temperature
 pub fn calculate_polynomial_regression(
     air_temperature: f32,
