@@ -4,7 +4,10 @@
 // Used to calculate the vapour pressure
 // in the air based on temperature and
 /// humidity
-pub fn calculate_vapour_pressure(air_temperature: f32, relative_humidity: f32) -> f32 {
+pub fn calculate_vapour_pressure(
+    air_temperature: f32,
+    relative_humidity: f32,
+) -> f32 {
     let g: [f32; 7] = [
         -2836.5744,
         -6028.076559,
@@ -17,10 +20,13 @@ pub fn calculate_vapour_pressure(air_temperature: f32, relative_humidity: f32) -
 
     let kelvin_temperature = air_temperature + 273 as f32;
 
-    let mut conversion = 2.7150305f32.log(kelvin_temperature + 1f32);
+    let mut conversion =
+        2.7150305f32.log(kelvin_temperature + 1f32);
 
     for i in 0..7 {
-        conversion = g[i] * kelvin_temperature.powf((i as isize - 2) as f32);
+        conversion = g[i]
+            * kelvin_temperature
+                .powf((i as isize - 2) as f32);
     }
 
     let water_vapour = exp(conversion) * 0.01;
@@ -53,13 +59,21 @@ pub fn calculate_polynomial_regression(
 ) -> f32 {
     let temp_diff = radiant_temperature - air_temperature;
     // convert to kpas
-    let vapour_pressure = calculate_vapour_pressure(air_temperature, relative_humidity) / 10f32;
+    let vapour_pressure = calculate_vapour_pressure(
+        air_temperature,
+        relative_humidity,
+    ) / 10f32;
 
     let approximation = air_temperature
         + 0.607562052
         + (-0.0227712343) * air_temperature
-        + (f32::powi(80.6470249, -4)) * air_temperature * air_temperature
-        + (f32::powi(-15.4271372, -4)) * air_temperature * air_temperature * air_temperature
+        + (f32::powi(80.6470249, -4))
+            * air_temperature
+            * air_temperature
+        + (f32::powi(-15.4271372, -4))
+            * air_temperature
+            * air_temperature
+            * air_temperature
         + (f32::powi(-32.4651735, -4))
             * air_temperature
             * air_temperature
@@ -80,7 +94,10 @@ pub fn calculate_polynomial_regression(
             * air_temperature
         + (-2.25836520) * wind_speed
         + 0.0880326035 * air_temperature * wind_speed
-        + 0.00216844454 * air_temperature * air_temperature * wind_speed
+        + 0.00216844454
+            * air_temperature
+            * air_temperature
+            * wind_speed
         + (f32::powi(-15.3347087, -5))
             * air_temperature
             * air_temperature
@@ -100,7 +117,10 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * wind_speed
         + (-0.751269505) * wind_speed * wind_speed
-        + (-0.00408350271) * air_temperature * wind_speed * wind_speed
+        + (-0.00408350271)
+            * air_temperature
+            * wind_speed
+            * wind_speed
         + (f32::powi(-52.1670675, -5))
             * air_temperature
             * air_temperature
@@ -119,8 +139,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * wind_speed
             * wind_speed
-        + 0.158137256 * wind_speed * wind_speed * wind_speed
-        + (f32::powi(-65.7263143, -5)) * air_temperature * wind_speed * wind_speed * wind_speed
+        + 0.158137256
+            * wind_speed
+            * wind_speed
+            * wind_speed
+        + (f32::powi(-65.7263143, -5))
+            * air_temperature
+            * wind_speed
+            * wind_speed
+            * wind_speed
         + (f32::powi(22.2697524, -7))
             * air_temperature
             * air_temperature
@@ -134,7 +161,11 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * wind_speed
             * wind_speed
-        + (-0.0127762753) * wind_speed * wind_speed * wind_speed * wind_speed
+        + (-0.0127762753)
+            * wind_speed
+            * wind_speed
+            * wind_speed
+            * wind_speed
         + (f32::powi(96.6891875, -6))
             * air_temperature
             * wind_speed
@@ -169,8 +200,13 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * wind_speed
         + 0.398374029 * temp_diff
-        + (f32::powi(18.3945314, -4)) * air_temperature * temp_diff
-        + (f32::powi(-17.3754510, -4)) * air_temperature * air_temperature * temp_diff
+        + (f32::powi(18.3945314, -4))
+            * air_temperature
+            * temp_diff
+        + (f32::powi(-17.3754510, -4))
+            * air_temperature
+            * air_temperature
+            * temp_diff
         + (f32::powi(-76.0781159, -7))
             * air_temperature
             * air_temperature
@@ -190,8 +226,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * temp_diff
         + (-0.0200518269) * wind_speed * temp_diff
-        + (f32::powi(89.2859837, -4)) * air_temperature * wind_speed * temp_diff
-        + (f32::powi(34.5433048, -6)) * air_temperature * air_temperature * wind_speed * temp_diff
+        + (f32::powi(89.2859837, -4))
+            * air_temperature
+            * wind_speed
+            * temp_diff
+        + (f32::powi(34.5433048, -6))
+            * air_temperature
+            * air_temperature
+            * wind_speed
+            * temp_diff
         + (f32::powi(-37.7925774, -7))
             * air_temperature
             * air_temperature
@@ -205,8 +248,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * wind_speed
             * temp_diff
-        + (f32::powi(16.9992415, -4)) * wind_speed * wind_speed * temp_diff
-        + (f32::powi(-49.9204314, -5)) * air_temperature * wind_speed * wind_speed * temp_diff
+        + (f32::powi(16.9992415, -4))
+            * wind_speed
+            * wind_speed
+            * temp_diff
+        + (f32::powi(-49.9204314, -5))
+            * air_temperature
+            * wind_speed
+            * wind_speed
+            * temp_diff
         + (f32::powi(24.7417178, -7))
             * air_temperature
             * air_temperature
@@ -220,7 +270,11 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * wind_speed
             * temp_diff
-        + (f32::powi(84.9242932, -5)) * wind_speed * wind_speed * wind_speed * temp_diff
+        + (f32::powi(84.9242932, -5))
+            * wind_speed
+            * wind_speed
+            * wind_speed
+            * temp_diff
         + (f32::powi(13.5191328, -6))
             * air_temperature
             * wind_speed
@@ -254,9 +308,18 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * wind_speed
             * temp_diff
-        + (f32::powi(75.5043090, -4)) * temp_diff * temp_diff
-        + (f32::powi(-56.5095215, -5)) * air_temperature * temp_diff * temp_diff
-        + (f32::powi(-45.2166564, -7)) * air_temperature * air_temperature * temp_diff * temp_diff
+        + (f32::powi(75.5043090, -4))
+            * temp_diff
+            * temp_diff
+        + (f32::powi(-56.5095215, -5))
+            * air_temperature
+            * temp_diff
+            * temp_diff
+        + (f32::powi(-45.2166564, -7))
+            * air_temperature
+            * air_temperature
+            * temp_diff
+            * temp_diff
         + (f32::powi(24.6688878, -8))
             * air_temperature
             * air_temperature
@@ -270,8 +333,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * temp_diff
             * temp_diff
-        + (f32::powi(15.4547250, -4)) * wind_speed * temp_diff * temp_diff
-        + (f32::powi(52.4110970, -6)) * air_temperature * wind_speed * temp_diff * temp_diff
+        + (f32::powi(15.4547250, -4))
+            * wind_speed
+            * temp_diff
+            * temp_diff
+        + (f32::powi(52.4110970, -6))
+            * air_temperature
+            * wind_speed
+            * temp_diff
+            * temp_diff
         + (f32::powi(-87.5874982, -8))
             * air_temperature
             * air_temperature
@@ -285,7 +355,11 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * temp_diff
             * temp_diff
-        + (f32::powi(-15.6236307, -5)) * wind_speed * wind_speed * temp_diff * temp_diff
+        + (f32::powi(-15.6236307, -5))
+            * wind_speed
+            * wind_speed
+            * temp_diff
+            * temp_diff
         + (f32::powi(-13.3895614, -7))
             * air_temperature
             * wind_speed
@@ -319,8 +393,15 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * temp_diff
             * temp_diff
-        + (f32::powi(-12.1206673, -5)) * temp_diff * temp_diff * temp_diff
-        + (f32::powi(-21.8203660, -7)) * air_temperature * temp_diff * temp_diff * temp_diff
+        + (f32::powi(-12.1206673, -5))
+            * temp_diff
+            * temp_diff
+            * temp_diff
+        + (f32::powi(-21.8203660, -7))
+            * air_temperature
+            * temp_diff
+            * temp_diff
+            * temp_diff
         + (f32::powi(75.1269482, -9))
             * air_temperature
             * air_temperature
@@ -334,7 +415,11 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
             * temp_diff
-        + (f32::powi(12.5006734, -6)) * wind_speed * temp_diff * temp_diff * temp_diff
+        + (f32::powi(12.5006734, -6))
+            * wind_speed
+            * temp_diff
+            * temp_diff
+            * temp_diff
         + (f32::powi(-18.1584736, -9))
             * air_temperature
             * wind_speed
@@ -368,7 +453,11 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
             * temp_diff
-        + (f32::powi(-13.0369025, -9)) * temp_diff * temp_diff * temp_diff * temp_diff
+        + (f32::powi(-13.0369025, -9))
+            * temp_diff
+            * temp_diff
+            * temp_diff
+            * temp_diff
         + (f32::powi(41.3908461, -10))
             * air_temperature
             * temp_diff
@@ -382,7 +471,12 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
             * temp_diff
-        + (f32::powi(-50.8220384, -9)) * wind_speed * temp_diff * temp_diff * temp_diff * temp_diff
+        + (f32::powi(-50.8220384, -9))
+            * wind_speed
+            * temp_diff
+            * temp_diff
+            * temp_diff
+            * temp_diff
         + (f32::powi(-22.4730961, -11))
             * air_temperature
             * wind_speed
@@ -397,7 +491,12 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
             * temp_diff
-        + (f32::powi(66.2154879, -10)) * temp_diff * temp_diff * temp_diff * temp_diff * temp_diff
+        + (f32::powi(66.2154879, -10))
+            * temp_diff
+            * temp_diff
+            * temp_diff
+            * temp_diff
+            * temp_diff
         + (f32::powi(40.3863260, -13))
             * air_temperature
             * temp_diff
@@ -420,8 +519,13 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
         + 5.12733497 * vapour_pressure
-        + (-0.312788561) * air_temperature * vapour_pressure
-        + (-0.0196701861) * air_temperature * air_temperature * vapour_pressure
+        + (-0.312788561)
+            * air_temperature
+            * vapour_pressure
+        + (-0.0196701861)
+            * air_temperature
+            * air_temperature
+            * vapour_pressure
         + (f32::powi(99.9690870, -4))
             * air_temperature
             * air_temperature
@@ -441,8 +545,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * vapour_pressure
         + 0.548050612 * wind_speed * vapour_pressure
-        + (-0.00330552823) * air_temperature * wind_speed * vapour_pressure
-        + (-0.00164119440) * air_temperature * air_temperature * wind_speed * vapour_pressure
+        + (-0.00330552823)
+            * air_temperature
+            * wind_speed
+            * vapour_pressure
+        + (-0.00164119440)
+            * air_temperature
+            * air_temperature
+            * wind_speed
+            * vapour_pressure
         + (f32::powi(-51.6670694, -6))
             * air_temperature
             * air_temperature
@@ -456,8 +567,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * wind_speed
             * vapour_pressure
-        + (-0.0429223622) * wind_speed * wind_speed * vapour_pressure
-        + 0.00500845667 * air_temperature * wind_speed * wind_speed * vapour_pressure
+        + (-0.0429223622)
+            * wind_speed
+            * wind_speed
+            * vapour_pressure
+        + 0.00500845667
+            * air_temperature
+            * wind_speed
+            * wind_speed
+            * vapour_pressure
         + (f32::powi(10.0601257, -6))
             * air_temperature
             * air_temperature
@@ -471,7 +589,11 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * wind_speed
             * vapour_pressure
-        + (f32::powi(-12.5813502, -3)) * wind_speed * wind_speed * wind_speed * vapour_pressure
+        + (f32::powi(-12.5813502, -3))
+            * wind_speed
+            * wind_speed
+            * wind_speed
+            * vapour_pressure
         + (f32::powi(-17.9330391, -4))
             * air_temperature
             * wind_speed
@@ -506,7 +628,10 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * vapour_pressure
         + (-0.0369476348) * temp_diff * vapour_pressure
-        + 0.00162325322 * air_temperature * temp_diff * vapour_pressure
+        + 0.00162325322
+            * air_temperature
+            * temp_diff
+            * vapour_pressure
         + (f32::powi(-31.4279680, -5))
             * air_temperature
             * air_temperature
@@ -525,8 +650,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * temp_diff
             * vapour_pressure
-        + (f32::powi(86.4203390, -3)) * wind_speed * temp_diff * vapour_pressure
-        + (f32::powi(-68.7405181, -4)) * air_temperature * wind_speed * temp_diff * vapour_pressure
+        + (f32::powi(86.4203390, -3))
+            * wind_speed
+            * temp_diff
+            * vapour_pressure
+        + (f32::powi(-68.7405181, -4))
+            * air_temperature
+            * wind_speed
+            * temp_diff
+            * vapour_pressure
         + (f32::powi(-91.3863872, -6))
             * air_temperature
             * air_temperature
@@ -540,7 +672,11 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * temp_diff
             * vapour_pressure
-        + (f32::powi(-35.9217476, -5)) * wind_speed * wind_speed * temp_diff * vapour_pressure
+        + (f32::powi(-35.9217476, -5))
+            * wind_speed
+            * wind_speed
+            * temp_diff
+            * vapour_pressure
         + (f32::powi(32.8696511, -5))
             * air_temperature
             * wind_speed
@@ -574,8 +710,15 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * temp_diff
             * vapour_pressure
-        + (f32::powi(-73.2469180, -4)) * temp_diff * temp_diff * vapour_pressure
-        + (f32::powi(-18.7381964, -5)) * air_temperature * temp_diff * temp_diff * vapour_pressure
+        + (f32::powi(-73.2469180, -4))
+            * temp_diff
+            * temp_diff
+            * vapour_pressure
+        + (f32::powi(-18.7381964, -5))
+            * air_temperature
+            * temp_diff
+            * temp_diff
+            * vapour_pressure
         + (f32::powi(48.0925239, -6))
             * air_temperature
             * air_temperature
@@ -589,7 +732,11 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
             * vapour_pressure
-        + (f32::powi(27.7862930, -5)) * wind_speed * temp_diff * temp_diff * vapour_pressure
+        + (f32::powi(27.7862930, -5))
+            * wind_speed
+            * temp_diff
+            * temp_diff
+            * vapour_pressure
         + (f32::powi(-50.6004592, -6))
             * air_temperature
             * wind_speed
@@ -623,7 +770,11 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * temp_diff
             * vapour_pressure
-        + (f32::powi(-35.9413173, -7)) * temp_diff * temp_diff * temp_diff * vapour_pressure
+        + (f32::powi(-35.9413173, -7))
+            * temp_diff
+            * temp_diff
+            * temp_diff
+            * vapour_pressure
         + (f32::powi(70.4388046, -7))
             * air_temperature
             * temp_diff
@@ -685,8 +836,15 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * vapour_pressure
         + (-2.80626406) * vapour_pressure * vapour_pressure
-        + 0.548712484 * air_temperature * vapour_pressure * vapour_pressure
-        + (-0.00399428410) * air_temperature * air_temperature * vapour_pressure * vapour_pressure
+        + 0.548712484
+            * air_temperature
+            * vapour_pressure
+            * vapour_pressure
+        + (-0.00399428410)
+            * air_temperature
+            * air_temperature
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(-95.4009191, -4))
             * air_temperature
             * air_temperature
@@ -700,8 +858,15 @@ pub fn calculate_polynomial_regression(
             * air_temperature
             * vapour_pressure
             * vapour_pressure
-        + (-0.308806365) * wind_speed * vapour_pressure * vapour_pressure
-        + 0.0116952364 * air_temperature * wind_speed * vapour_pressure * vapour_pressure
+        + (-0.308806365)
+            * wind_speed
+            * vapour_pressure
+            * vapour_pressure
+        + 0.0116952364
+            * air_temperature
+            * wind_speed
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(49.5271903, -4))
             * air_temperature
             * air_temperature
@@ -715,7 +880,11 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * vapour_pressure
             * vapour_pressure
-        + 0.00210787756 * wind_speed * wind_speed * vapour_pressure * vapour_pressure
+        + 0.00210787756
+            * wind_speed
+            * wind_speed
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(-69.8445738, -4))
             * air_temperature
             * wind_speed
@@ -749,8 +918,15 @@ pub fn calculate_polynomial_regression(
             * wind_speed
             * vapour_pressure
             * vapour_pressure
-        + 0.0514507424 * temp_diff * vapour_pressure * vapour_pressure
-        + (-0.00432510997) * air_temperature * temp_diff * vapour_pressure * vapour_pressure
+        + 0.0514507424
+            * temp_diff
+            * vapour_pressure
+            * vapour_pressure
+        + (-0.00432510997)
+            * air_temperature
+            * temp_diff
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(89.9281156, -5))
             * air_temperature
             * air_temperature
@@ -764,7 +940,11 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * vapour_pressure
             * vapour_pressure
-        + (f32::powi(-26.6016305, -4)) * wind_speed * temp_diff * vapour_pressure * vapour_pressure
+        + (f32::powi(-26.6016305, -4))
+            * wind_speed
+            * temp_diff
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(26.3789586, -4))
             * air_temperature
             * wind_speed
@@ -798,7 +978,11 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * vapour_pressure
             * vapour_pressure
-        + (f32::powi(30.4788893, -4)) * temp_diff * temp_diff * vapour_pressure * vapour_pressure
+        + (f32::powi(30.4788893, -4))
+            * temp_diff
+            * temp_diff
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(-64.2070836, -5))
             * air_temperature
             * temp_diff
@@ -859,8 +1043,15 @@ pub fn calculate_polynomial_regression(
             * temp_diff
             * vapour_pressure
             * vapour_pressure
-        + (-0.0353874123) * vapour_pressure * vapour_pressure * vapour_pressure
-        + (-0.221201190) * air_temperature * vapour_pressure * vapour_pressure * vapour_pressure
+        + (-0.0353874123)
+            * vapour_pressure
+            * vapour_pressure
+            * vapour_pressure
+        + (-0.221201190)
+            * air_temperature
+            * vapour_pressure
+            * vapour_pressure
+            * vapour_pressure
         + 0.0155126038
             * air_temperature
             * air_temperature
@@ -874,7 +1065,11 @@ pub fn calculate_polynomial_regression(
             * vapour_pressure
             * vapour_pressure
             * vapour_pressure
-        + 0.0453433455 * wind_speed * vapour_pressure * vapour_pressure * vapour_pressure
+        + 0.0453433455
+            * wind_speed
+            * vapour_pressure
+            * vapour_pressure
+            * vapour_pressure
         + (-0.00432943862)
             * air_temperature
             * wind_speed
@@ -908,7 +1103,11 @@ pub fn calculate_polynomial_regression(
             * vapour_pressure
             * vapour_pressure
             * vapour_pressure
-        + (-0.00226921615) * temp_diff * vapour_pressure * vapour_pressure * vapour_pressure
+        + (-0.00226921615)
+            * temp_diff
+            * vapour_pressure
+            * vapour_pressure
+            * vapour_pressure
         + (f32::powi(38.0261982, -4))
             * air_temperature
             * temp_diff
@@ -969,7 +1168,11 @@ pub fn calculate_polynomial_regression(
             * vapour_pressure
             * vapour_pressure
             * vapour_pressure
-        + 0.614155345 * vapour_pressure * vapour_pressure * vapour_pressure * vapour_pressure
+        + 0.614155345
+            * vapour_pressure
+            * vapour_pressure
+            * vapour_pressure
+            * vapour_pressure
         + (-0.0616755931)
             * air_temperature
             * vapour_pressure
