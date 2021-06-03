@@ -42,3 +42,5 @@ of Experienced Heat Stress.
 This Scale ranges from -50[c] (Extreme Cold
 Stress), to +50[c] (Extreme Heat Stress).
 
+file:///Users/lukepearson/Desktop/Screenshot%202021-06-03%20at%2015.12.11.png
+
