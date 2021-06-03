@@ -25,6 +25,7 @@ The parameters for the modelling are:
 - Are you situated in the city centre(dutch: Binnenstad)?
 - Are you under the shade of a tree? 
 - Are you situated in a park?
+![FlowDiagram](https://user-images.githubusercontent.com/49643572/120662679-a273e500-c489-11eb-9c70-58dcce030edf.jpg)
 
 # Quantification 
 The mathematical formulae for calculating 
@@ -42,5 +43,5 @@ of Experienced Heat Stress.
 This Scale ranges from -50[c] (Extreme Cold
 Stress), to +50[c] (Extreme Heat Stress).
 
-file:///Users/lukepearson/Desktop/Screenshot%202021-06-03%20at%2015.12.11.png
+![Scale](https://user-images.githubusercontent.com/49643572/120662156-30030500-c489-11eb-860e-c27792d35351.png)
 
